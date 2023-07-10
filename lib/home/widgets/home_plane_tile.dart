@@ -44,23 +44,26 @@ class _HomePlaneTileState extends State<HomePlaneTile> {
           onTap: _onTap,
           isOpened: _isOpened,
         ),
+
         // Показываем список маршрутов, если плашка открыта
         if (_isOpened)
           Padding(
             padding: const EdgeInsets.only(top: 18),
-            child: ListView.separated(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: widget.segments.length,
-              itemBuilder: (context, index) {
-                /// Карточка с маршрутом
-                return TripCard(segment: widget.segments[index]);
-              },
-              separatorBuilder: (context, index) {
-                return const SizedBox(height: 18);
-              },
-            ),
-          ),
+            child: Column(
+            children: List.generate(widget.segments.length, (index) {
+              final isFirst = index == 0;
+              final isLast = index == widget.segments.length-1;
+
+              return Padding(
+                padding: EdgeInsets.only(
+                  top: isFirst ? 0 : 9,
+                  bottom: isLast ? 0 : 9,
+                ),
+                child: TripCard(segment: widget.segments[index]),
+              );
+            }),
+          )
+        ),
       ],
     );
   }
