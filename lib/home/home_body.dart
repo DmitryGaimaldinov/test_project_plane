@@ -7,7 +7,7 @@ import 'package:test_project_plane/util/date_time_extension.dart';
 
 import 'widgets/home_date_list_view.dart';
 import 'widgets/home_title.dart';
-import 'widgets/home_transport_tile.dart';
+import 'widgets/home_plane_tile.dart';
 
 class HomeBody extends StatefulWidget {
   final ApiResult apiResult;

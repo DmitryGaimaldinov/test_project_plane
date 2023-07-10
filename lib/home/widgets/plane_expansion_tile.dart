@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../util/font_families.dart';
 
+/// Плашка с маршрутами на самолёте
 class PlaneExpansionTile extends StatefulWidget {
   final String label;
   final void Function(bool isOpened) onTap;
@@ -65,7 +66,7 @@ class _PlaneExpansionTileState extends State<PlaneExpansionTile>
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // TODO: Вынести в _Leading()
+            // В начале иконка самолёта и надпись
             Wrap(
               children: [
                 _TransportIcon(),
@@ -80,15 +81,12 @@ class _PlaneExpansionTileState extends State<PlaneExpansionTile>
                 )
               ],
             ),
+            // В конце анимированная иконка стрелки (вверх/вниз)
             AnimatedRotation(
                 turns: _isOpened ? 0 : 0.5,
                 duration: Duration(milliseconds: 200),
                 child: Icon(Icons.keyboard_arrow_up)
             ),
-            // AnimatedIcon(
-            //   icon: AnimatedIcons.arrow_menu,
-            //   progress: animation,
-            // ),
           ],
         ),
       ),
